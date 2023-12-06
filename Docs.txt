@@ -1,0 +1,12 @@
+docker build : self explanatory
+    -t : donne un nom a l'image
+
+docker image ls : ls
+
+docker run <image_name>
+    -it : acceder directement au terminal de l'img au lancement
+
+docker ps : list les containers utilises
+    -a : liste aussi les stoppes
+
+
