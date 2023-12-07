@@ -1,7 +1,9 @@
 FROM debian:buster
 
-RUN apt-get update -y && apt-get install mariadb-server -y
+RUN apt-get update -y && apt upgrade -y && apt-get install mariadb-server -y
 
-COPY ./tools/50_server.conf /etc/mysql/mariadb.conf.d/
+COPY ./conf/50_server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-CMD /usr/bin/mysqld_safe
+#CMD /usr/bin/mysqld_safe
+
+#CMD service mysql start
