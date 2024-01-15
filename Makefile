@@ -6,13 +6,16 @@
 #    By: babieseater <babieseater@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/22 15:54:05 by smayrand          #+#    #+#              #
-#    Updated: 2024/01/07 17:59:41 by babieseater      ###   ########.fr        #
+#    Updated: 2024/01/15 17:10:01 by babieseater      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
 	docker compose -f ./srcs/docker-compose.yml up -d --build
-	
+
+up:
+	docker-compose -f ./srcs/docker-compose.yml up -d
+
 dw:
 	docker compose -f ./srcs/docker-compose.yml down
 

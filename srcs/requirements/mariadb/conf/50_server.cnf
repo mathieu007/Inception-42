@@ -1,7 +1,8 @@
 #[client-server]
 #!includedir /etc/mysql/conf.d/
 #!includedir /etc/mysql/mariadb.conf.d/
-
+[mysql]
+default-character-set=utf8
 [mysqld]
 datadir = /var/lib/mysql
 socket = /run/mysqld/mysqld.sock
