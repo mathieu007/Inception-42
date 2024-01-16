@@ -1,4 +1,4 @@
-version: '3'
+version: '3.9'
 
 services:
   mariadb:
@@ -9,7 +9,7 @@ services:
     networks:
       - inception
     build:
-      context: requirements/mariadb/.
+      context: ./requirements/mariadb
       dockerfile: Dockerfile
     env_file: .env
     restart: on-failure
@@ -26,7 +26,7 @@ services:
     depends_on:
       - wordpress
     build:
-      context: requirements/nginx/.
+      context: ./requirements/nginx
       dockerfile: Dockerfile
     env_file: .env
     ports:
@@ -42,7 +42,7 @@ services:
     networks:
       - inception
     build:
-      context: requirements/wordpress/.
+      context: ./requirements/wordpress
       dockerfile: Dockerfile
     depends_on:
       - mariadb
@@ -51,20 +51,21 @@ services:
      - "9000"
 
 volumes:
-  wordpress:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: ${PWD}/wordpress
-      #device: 'Users/smayrand/data/wordpress'
   mariadb:
+    name: mariadb
     driver: local
     driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: ${PWD}/mariadb
-      #device: 'Users/smayrand/data/mariadb'
+      device: /home/${USER}/data/mariadb/
+      o: bind
+      type: none
+
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USER}/data/wordpress/
 
 networks:
   inception:
